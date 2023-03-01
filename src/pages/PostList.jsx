@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import SinglePost from '../components/SinglePost';
 import usePostsStore from '../store/posts';
 
@@ -8,7 +8,7 @@ const PostList = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   return (
     <div className="container mx-auto mt-5 p-8 bg-white">

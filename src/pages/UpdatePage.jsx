@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CommentSection from '../components/CommentSection';
 import usePostsStore from '../store/posts';
@@ -21,7 +21,7 @@ function UpdatePage() {
   useEffect(() => {
     getPost(id);
     getComments(id);
-  }, [id]);
+  }, [getPost, getComments, id]);
 
   const handleDelete = (id) => {
     deletePost(id);
@@ -72,8 +72,9 @@ function UpdatePage() {
                   ref={title}
                   rows="2"
                   className="p-3 px-5 w-full text-bold text-gray-900 bg-gray-50 rounded-lg border border-gray-300"
-                  placeholder={post.title}
-                ></textarea>
+                >
+                  {post.title}
+                </textarea>
               </div>
               <div>
                 <label className="mb-2 text-sm font-medium text-gray-900">
@@ -83,8 +84,9 @@ function UpdatePage() {
                   ref={body}
                   rows="8"
                   className="p-3 px-5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300"
-                  placeholder={post.body}
-                ></textarea>
+                >
+                  {post.body}
+                </textarea>
               </div>
             </div>
             <div className="flex justify-end pt-5">
